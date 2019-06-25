@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="t">
+    <h1>Stratego</h1>
+  </div>
+  
+  <div class="b">
+    <div>
+      <input type="text" #createName required placeholder="Username" autocomplete="off">
+      <button (click)="createGame(createName.value)">Create Game</button>
+    </div>
+    <div>
+      <h3>Join an existing game:</h3>
+      <input type="text" #joinName required placeholder="Username" autocomplete="off">
+      <input type="text" #gameKey required placeholder="Game Key" autocomplete="off">
+      <button (click)="joinGame(joinName.value, gameKey.value)">Join Game</button>
+    </div>
+  </div>
+</div>
