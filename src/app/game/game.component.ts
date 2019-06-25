@@ -23,6 +23,7 @@ export class GameComponent implements OnInit {
   currentPlayer: Player;
   players: Player[];
   thisGame;
+  thatGame;
 
   constructor(
     private router: Router,
@@ -32,7 +33,10 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.thisGame = this.gameService.getGame(this.localGameKey);
-  }
+    this.gameService.getGame(this.localGameKey).subscribe(data => {
+      this.thatGame = new Game(data.players, data.board);
+    });
+    console.log(this.thatGame);  }
 
   
   

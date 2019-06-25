@@ -56,10 +56,13 @@ export class LobbyComponent implements OnInit {
     
     // this.setLocalUser.emit(username);
     let newPlayer = new Player(username, 'b');
-    let thisGame = this.gameService.getGame(gameKey);
+    let thatGame: Game;
+    this.gameService.getGame(gameKey).subscribe(data => {
+      thatGame = new Game(data.players, data.board);
+    });
+    thatGame.players.push(newPlayer);
+    this.gameService.updateGame(thatGame, gameKey);
     this.setLocalVariablesEvent.emit({"player": newPlayer, "key": gameKey});
-
-    //FIND PLAYER[] AND ADD PLAYER 2 TO GAME HERE
     
   
   }

@@ -26,4 +26,12 @@ export class GameService implements OnInit{
   createGame(game: Game) {    
     return this.database.list('games').push(game);
   }
+
+  updateGame(localGame, localGameKey) {
+    let databaseGame = this.getGame(localGameKey);
+    databaseGame.update({
+      players: localGame.players,
+      board: localGame.board
+    });
+  }
 }
