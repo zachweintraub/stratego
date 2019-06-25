@@ -2,22 +2,9 @@ import { Piece } from './piece';
 import { Player } from './player';
 
 export class Game {
-
-    board: any[][];
-
-    constructor(public players: Player[]){
-        this.board = [
-
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 ,-1 ,-1 , 0 , 0 ,-1 ,-1 , 0 , 0],
-            [0 , 0 ,-1 ,-1 , 0 , 0 ,-1 ,-1 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
-            [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0]
-        ]
-    }
+    
+    constructor(
+        public players: Player[],
+        public board: any[][]
+    ){}
 }

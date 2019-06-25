@@ -1,2 +1,2 @@
-<app-lobby *ngIf="!localPlayer" (setLocalPlayerEvent)="setLocalPlayer($event)"></app-lobby>
-<app-game *ngIf="localPlayer" [localPlayer]="localPlayer"></app-game>
+<app-lobby *ngIf="!localPlayer" (setLocalVariablesEvent)="setLocalVariables($event)"></app-lobby>
+<app-game *ngIf="localPlayer" [localPlayer]="localPlayer" [localGameKey]="localGameKey"></app-game>

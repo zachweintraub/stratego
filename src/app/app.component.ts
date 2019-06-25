@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Player } from './models/player';
+import { Game } from './models/game'; 
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,11 @@ import { Player } from './models/player';
 })
 export class AppComponent {
   localPlayer: Player;
+  localGameKey: string;
   title: string = 'Stratego';
-  setLocalPlayer(myLocalPlayer: Player) {
-    this.localPlayer = myLocalPlayer;
-    console.log(this.localPlayer.name);
+  setLocalVariables(vars: Object) {
+    this.localPlayer = vars["player"];
+    this.localGameKey = vars["key"];
+    console.log(this.localPlayer.name + " " + this.localGameKey);
   }
 }

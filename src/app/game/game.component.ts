@@ -1,31 +1,28 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Piece } from '../models/piece';
-import { Game } from '../models/game';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GameService } from '../shared/game.service';
-import { Observable } from 'rxjs';
 import { Player } from '../models/player';
-import { map } from 'rxjs/operators';
-import { Observer } from 'firebase';
-import { AngularFireObject } from '@angular/fire/database';
+import { Game } from '../models/game';
+import { createOfflineCompileUrlResolver } from '@angular/compiler';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  providers: [GameService]
 })
 export class GameComponent implements OnInit {
  
   @Input() localPlayer;
+  @Input() localGameKey;
   key: string;
   board: any[][];
   opponentPlayer: Player;
   currentPlayer: Player;
-  gameDBRef: Observer<any>;
-
-  game: any;
-
-  test: any;
+  players: Player[];
+  thisGame;
 
   constructor(
     private router: Router,
@@ -33,21 +30,8 @@ export class GameComponent implements OnInit {
     private gameService: GameService) { }
   
 
-    ngOnInit() {
-      
-      this.activeRoute.params.forEach((urlParameters) => {
-        this.key = urlParameters['id'];
-      })  
-
-      this.game = this.gameService.getGame(this.key);
-      console.log(this.game);
-      console.log(typeof this.game);
-
-      this.game.pipe(actions => {
-        actions.map(a => {
-          
-        })
-      }).subscribe(data => console.log(data));
+  ngOnInit() {
+    this.thisGame = this.gameService.getGame(this.localGameKey);
   }
 
   

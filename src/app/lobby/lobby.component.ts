@@ -4,6 +4,7 @@ import { Game } from '../models/game';
 import { Player } from '../models/player';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-lobby',
@@ -13,7 +14,7 @@ import { map } from 'rxjs/operators';
 })
 export class LobbyComponent implements OnInit {
 
-  @Output() setLocalPlayerEvent = new EventEmitter();
+  @Output() setLocalVariablesEvent = new EventEmitter();
 
   constructor(
     private gameService: GameService,
@@ -25,14 +26,29 @@ export class LobbyComponent implements OnInit {
 
   createGame(username: string) {
     if(!username) return;
-    // TODO? Randomize red or blue team?
+
     let newPlayer = new Player(username, 'r');
-    this.setLocalPlayerEvent.emit(newPlayer);
-    let newGame = new Game([newPlayer, null]);
+    let newGame = new Game([newPlayer, null], 
+      [
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 ,-1 ,-1 , 0 , 0 ,-1 ,-1 , 0 , 0],
+        [0 , 0 ,-1 ,-1 , 0 , 0 ,-1 ,-1 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
+        [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0]
+      ]
+    );
 
-    let key = this.gameService.createGame(newGame);
+    let dbGame = this.gameService.createGame(newGame);
+    
+    this.setLocalVariablesEvent.emit({"player": newPlayer, "key": dbGame.key});
 
-    this.router.navigate(['games', key]);    
+    // TEMP 
+    alert("Share this key with your friend: "+dbGame.key)
   }
   
   joinGame(username: string, gameKey: string) {
@@ -40,11 +56,13 @@ export class LobbyComponent implements OnInit {
     
     // this.setLocalUser.emit(username);
     let newPlayer = new Player(username, 'b');
-    this.gameService.getGame(gameKey);
+    let thisGame = this.gameService.getGame(gameKey);
+    this.setLocalVariablesEvent.emit({"player": newPlayer, "key": gameKey});
 
     //FIND PLAYER[] AND ADD PLAYER 2 TO GAME HERE
     
-    this.router.navigate(['games', gameKey]);
+  
   }
 
 }
+// -LiFYL4CDSEG8-6YsJxL
