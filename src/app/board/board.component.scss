@@ -12,6 +12,12 @@
     background-image: url("../../assets/img/grass.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    opacity: 10;
+	  -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+  .grass:hover{
+    opacity: .5;
   }
   
   .waterTL {

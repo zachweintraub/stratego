@@ -11,16 +11,14 @@
 }
 .bCon{
     background-color: rgb(49, 49, 161);
-    height: 200px;
+    height: 250px;
     width: 600px;
     color: white;
     text-align: center;
     margin: 0 auto;
     object-fit: center;
+    transform: translateY(-40px);
 } 
-img{
-    height: 45px;
-}
 
 .rFlex{
     position: relative;
@@ -42,6 +40,12 @@ img{
 }
 img{
     height: 45px;
+    transition: transform .2s;
+}
+img:hover{
+    -ms-transform: scale(1.5); 
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
 }
 .placement{
     margin-top: -16px;
