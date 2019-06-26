@@ -1,0 +1,47 @@
+.cover{
+    background-color: black;
+    position: absolute;
+    width: 600px;
+    height: 300px;
+    margin-left: 50%;
+    left: -300px;
+    color: white;
+    text-align: center;
+    
+    
+}
+li{
+    list-style-type: none;
+}
+@media screen and (max-width: 600px){
+    .cover{
+        padding: 10px;
+        width: 600px;
+        
+    }
+    .no{
+        margin: auto;
+        width: 100px;
+    }
+    li{
+        width: 600px;
+        margin-left: -300px;
+        padding: 3%;
+    }
+}
+@media screen and (max-width: 480px){
+    .cover{
+        background-color: black;
+        width: 690px;
+        margin-left: 200px; 
+    }
+    li{
+        width: 400px;
+        margin-left: -140px;
+    }
+}
+@media screen and (max-width: 390px){
+    .cover{
+        width: 700px;
+    }
+}

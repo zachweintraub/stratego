@@ -10,6 +10,7 @@ import { firebaseConfig } from '../firebaseApi';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LobbyComponent } from './lobby/lobby.component';
+import { GraveyardRedComponent } from './graveyard-red/graveyard-red.component';
 
 export const firebase = {
   apiKey: firebaseConfig.apiKey,
@@ -25,7 +26,8 @@ export const firebase = {
     GraveyardComponent,
     InventoryComponent,
     GameComponent,
-    LobbyComponent
+    LobbyComponent,
+    GraveyardRedComponent
   ],
   imports: [
     BrowserModule,
