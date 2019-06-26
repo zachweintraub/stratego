@@ -1,8 +1,8 @@
 
-<app-graveyard [color]=(localGame.players[0].color)></app-graveyard>
+<app-graveyard [color]=(localGame.players[0].color) [thisGraveyard]=(localGame.redGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
 <app-inventory></app-inventory>
 <app-board></app-board>
-<app-graveyard [color]=(localGame.players[1].color)></app-graveyard>
+<app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
 
 
 <h1>Game Goes Here</h1>

@@ -59,20 +59,18 @@ export class LobbyComponent implements OnInit {
         {piece: new Piece(11,"r",0), quantity: 6}
       ],
       [
-        [
-          {piece: new Piece(0,"b",0), quantity: 1},
-          {piece: new Piece(1,"b",1), quantity: 1},
-          {piece: new Piece(2,"b",9), quantity: 8},
-          {piece: new Piece(3,"b",1), quantity: 5},
-          {piece: new Piece(4,"b",1), quantity: 4},
-          {piece: new Piece(5,"b",1), quantity: 4},
-          {piece: new Piece(6,"b",1), quantity: 4},
-          {piece: new Piece(7,"b",1), quantity: 3},
-          {piece: new Piece(8,"b",1), quantity: 2},
-          {piece: new Piece(9,"b",1), quantity: 1},
-          {piece: new Piece(10,"b",1), quantity: 1},
-          {piece: new Piece(11,"b",0), quantity: 6}
-        ]
+        {piece: new Piece(0,"b",0), quantity: 1},
+        {piece: new Piece(1,"b",1), quantity: 1},
+        {piece: new Piece(2,"b",9), quantity: 8},
+        {piece: new Piece(3,"b",1), quantity: 5},
+        {piece: new Piece(4,"b",1), quantity: 4},
+        {piece: new Piece(5,"b",1), quantity: 4},
+        {piece: new Piece(6,"b",1), quantity: 4},
+        {piece: new Piece(7,"b",1), quantity: 3},
+        {piece: new Piece(8,"b",1), quantity: 2},
+        {piece: new Piece(9,"b",1), quantity: 1},
+        {piece: new Piece(10,"b",1), quantity: 1},
+        {piece: new Piece(11,"b",0), quantity: 6} 
       ]
     );
 

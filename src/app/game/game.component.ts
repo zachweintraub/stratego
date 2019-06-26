@@ -43,6 +43,14 @@ export class GameComponent implements OnInit {
     // console.log("oppenentPlayer: " + this.opponentPlayer)
   }
 
+  selectGraveyardPiece(clickedId: string) {
+    let color = clickedId[0];
+    let position = clickedId.slice(1);
+    // if (!this.selectedPiece && this.localPlayer.color == color) {
+    //   this.selectedPiece = localGame
+    // }
+  }
+
   placePiece(clickedSquare: string) { //, piece: Piece = this.selectedPiece
     let y: number = parseInt(clickedSquare[1]);
     let x: number = parseInt(clickedSquare[0]);
@@ -60,6 +68,8 @@ export class GameComponent implements OnInit {
       this.selectedPiece = null;
     }
   }
+
+
 
 
 

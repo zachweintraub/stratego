@@ -12,16 +12,15 @@ export class GraveyardComponent implements OnInit {
 
   @Output() onGraveyardPieceClicked = new EventEmitter();
   @Input() color: string;
+  @Input() thisGraveyard: Object[];
 
   ngOnInit() {
   }
 
   graveyardPieceClicked(id: string) {
 
-    let pieceNum = parseInt(id);
-    this.onGraveyardPieceClicked.emit(pieceNum);
-
-    console.log("graveyard.comp emitting onGraveyardPieceClicked: " + pieceNum)
+    this.onGraveyardPieceClicked.emit(id);
+    console.log("graveyard.comp emitting onGraveyardPieceClicked: " + id)
   }
 
 }
