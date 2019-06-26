@@ -45,8 +45,8 @@ export class LobbyComponent implements OnInit {
         [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0]
       ],
       [
-        {piece: new Piece(1,"r",1), quantity: 1},
         {piece: new Piece(0,"r",0), quantity: 1},
+        {piece: new Piece(1,"r",1), quantity: 1},
         {piece: new Piece(2,"r",9), quantity: 8},
         {piece: new Piece(3,"r",1), quantity: 5},
         {piece: new Piece(4,"r",1), quantity: 4},

@@ -2,22 +2,23 @@
     background-color: rgb(37, 37, 141);
     position: absolute;
     width: 600px;
-    height: 300px;
+    height: 360px;
     margin-left: 50%;
     left: -300px;
     color: white;
-    text-align: center;
+    transform: translateY(-660px);
+    z-index: 1;
 }
 .rcover{
     background-color: rgb(147, 37, 24);
     position: absolute;
     width: 600px;
-    height: 300px;
+    height: 360px;
     margin-left: 50%;
     left: -300px;
     color: white;
-    text-align: center;
-    transform: translateY(300px);
+    transform: translateY(-360px);
+    z-index: 1;
 }
 h3{
     color: white;

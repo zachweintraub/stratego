@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
   opponentPlayer: Player;
   currentPlayer: Player;
   localGame: Game;
-  selectedPiece: Piece = null;
+  selectedPiece: Piece;
 
 // board: any[][];
 // players: Player[];
@@ -44,21 +44,39 @@ export class GameComponent implements OnInit {
     let position = clickedId.slice(1);
 
     if(color == "r" && this.localPlayer.color == "r") {
-      this.selectedPiece = this.localGame.redGraveyard[position];
+      if(this.localGame.redGraveyard[position].quantity <=0) return;
+      this.selectedPiece = this.localGame.redGraveyard[position].piece;
+
+      console.log("boop: " + this.selectedPiece.color);
     }
     else if(color == "b" && this.localPlayer.color == "b") {
-      this.selectedPiece = this.localGame.blueGraveyard[position];
+      if(this.localGame.blueGraveyard[position].quantity <=0) return;
+      this.selectedPiece = this.localGame.blueGraveyard[position].piece;
+
+      console.log("boop: " + this.selectedPiece.color);
     }
-    console.log(this.selectedPiece);
   }
 
   placeGraveyardPiece(clickedPosition: string) {
     if(this.selectedPiece) {
       let col: number = parseInt(clickedPosition[1]);
       let row: number = parseInt(clickedPosition[0]);
-      this.localGame.board[row][col] = this.selectedPiece;
-      this.selectedPiece = null;
-      console.log(this.localGame.board);
+
+      if(this.localGame.board[row][col] == 0){
+        this.localGame.board[row][col] = this.selectedPiece;
+        console.log(this.selectedPiece.color);
+  
+        if(this.selectedPiece.color == "r") {
+          console.log(this.localGame.redGraveyard[this.selectedPiece.value]);
+          this.localGame.redGraveyard[this.selectedPiece.value]["quantity"]--;
+        }
+        if(this.selectedPiece.color == "b") {
+          console.log(this.localGame.blueGraveyard[this.selectedPiece.value]);
+          this.localGame.blueGraveyard[this.selectedPiece.value]["quantity"]--;
+        }
+        this.selectedPiece = null;
+        this.submitData();
+      }
     }
   }
 
@@ -117,8 +135,8 @@ export class GameComponent implements OnInit {
   // }
 
   // dies(squareId: number) {
-  //   this.graveyard.push(this.board[squareId[0]][squareId[1]]);
-  //   this.board[squareId[0]][squareId[1]] = 0;
+  //     attacker.dies();
+  //   }
   // }
-  
+
 }

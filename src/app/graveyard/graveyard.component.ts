@@ -18,7 +18,7 @@ export class GraveyardComponent implements OnInit {
   }
 
   graveyardPieceClicked(id: string) {
-
+    
     this.onGraveyardPieceClicked.emit(id);
     console.log("graveyard.comp emitting onGraveyardPieceClicked: " + id)
   }

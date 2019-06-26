@@ -27,26 +27,27 @@
     background-image: url("../../assets/img/lakeTopL.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 2;
   }
   .waterTR {
     background-image: url("../../assets/img/lakeTopR.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 2;
   }
   .waterBL {
     background-image: url("../../assets/img/lakeBottomLeft.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 2;
   }
   .waterBR {
     background-image: url("../../assets/img/lakeBottomRight.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 2;
   }
   
-#img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 600px;
-} 
+.boardPiece {
+  position: absolute;
+}

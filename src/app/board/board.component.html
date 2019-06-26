@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let each of flatBoard; let i = index;" [ngClass]="{'waterTR': i==42 || i==46, 'waterTL': i == 43 || i == 47, 'waterBR': i == 53 || i == 57, 'waterBL': i == 52 || i == 56, 'grass': i != 42 && i != 46 && i != 43 && i != 47 && i != 53 && i != 57 && i != 52 && i != 56}" id="{{i}}" (click)="squareClicked($event.target.id)"><div *ngIf="flatBoard[i].piece"><img src="{{flatBoard[i].piece.imageUrl}}"/></div></div>
+  <div *ngFor="let each of flatBoard; let i = index;" [ngClass]="{'waterTR': i==42 || i==46, 'waterTL': i == 43 || i == 47, 'waterBR': i == 53 || i == 57, 'waterBL': i == 52 || i == 56, 'grass': i != 42 && i != 46 && i != 43 && i != 47 && i != 53 && i != 57 && i != 52 && i != 56}" id="{{i}}" (click)="squareClicked($event.target.id)"><img *ngIf="flatBoard[i]" src="{{flatBoard[i].imageUrl}}" class="boardPiece"/></div>
 </div>
 
 

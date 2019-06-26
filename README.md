@@ -1,9 +1,10 @@
 # Stratego
 
 Placement
-    - select pc > highlight/enlarge
-    - select tile to drop pc into
-    - select placed pcs and replace them on another tile
+    - select pc > highlight/enlarge √
+    - select tile to drop pc into √
+    - select placed pcs and replace them on another tile 
+    - cant drop multiple pcs on one tile √
     + captured (GY) pcs not selectable after game starts
 Initialize:
     - both players click ready button
