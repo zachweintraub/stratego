@@ -1,5 +1,5 @@
-.cover{
-    background-color: black;
+.bcover{
+    background-color: rgb(37, 37, 141);
     position: absolute;
     width: 600px;
     height: 300px;
@@ -7,8 +7,20 @@
     left: -300px;
     color: white;
     text-align: center;
-    
-    
+}
+.rcover{
+    background-color: rgb(147, 37, 24);
+    position: absolute;
+    width: 600px;
+    height: 300px;
+    margin-left: 50%;
+    left: -300px;
+    color: white;
+    text-align: center;
+    transform: translateY(300px);
+}
+h3{
+    color: white;
 }
 li{
     list-style-type: none;
