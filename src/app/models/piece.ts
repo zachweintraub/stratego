@@ -3,8 +3,7 @@ export class Piece {
     constructor(
         public value: number,
         public color: string,
-        public movement: number,
-        public position: {"x": 0, "y": 0}) {
+        public movement: number) {
             
         this.imageUrl = "assests/img/" + color + value + ".jpeg";
 

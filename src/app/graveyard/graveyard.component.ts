@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Piece } from '../models/piece';
 
 @Component({
@@ -8,10 +8,20 @@ import { Piece } from '../models/piece';
 })
 export class GraveyardComponent implements OnInit {
 
-  constructor(public red: Piece[] = [], public blue: Piece[] = []) { }
+  // constructor(public red: Piece[] = [], public blue: Piece[] = []) { }
+
+  @Output() onGraveyardPieceClicked = new EventEmitter();
+  @Input() color: string;
 
   ngOnInit() {
   }
 
+  graveyardPieceClicked(id: string) {
+
+    let pieceNum = parseInt(id);
+    this.onGraveyardPieceClicked.emit(pieceNum);
+
+    console.log("graveyard.comp emitting onGraveyardPieceClicked: " + pieceNum)
+  }
 
 }

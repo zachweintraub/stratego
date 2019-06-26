@@ -1,5 +1,5 @@
 
-.blueFlex{
+.bFlex{
     position: relative;
     color: white;
     margin: 40px;
@@ -9,7 +9,7 @@
     padding: 2%;
     
 }
-.blueCon{
+.bCon{
     background-color: rgb(49, 49, 161);
     height: 200px;
     width: 600px;
@@ -20,4 +20,32 @@
 } 
 img{
     height: 45px;
+}
+
+.rFlex{
+    position: relative;
+    color: white;
+    margin: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2%;
+}
+.rCon{
+    background-color: rgb(161, 49, 49);
+    height: 200px;
+    width: 600px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    object-fit: center;
+}
+img{
+    height: 45px;
+}
+.placement{
+    margin-top: -16px;
+}
+#r{
+    padding-top: 20px;
 }

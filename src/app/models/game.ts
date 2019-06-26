@@ -5,6 +5,8 @@ export class Game {
     
     constructor(
         public players: Player[],
-        public board: any[][]
+        public board: any[][],
+        public redGraveyard: Object[],
+        public blueGraveyard: Object[]
     ){}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  @Output() onSquareClicked = new EventEmitter()
+
   constructor() { }
 
   ngOnInit() {
   }
 
+
+  squareClicked(coords: string) {
+    console.log("board.component says, squareClicked: " + coords);
+    this.onSquareClicked.emit(coords);
+  }
 }

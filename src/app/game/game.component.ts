@@ -5,6 +5,7 @@ import { Player } from '../models/player';
 import { Game } from '../models/game';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { Piece } from '../models/piece';
 
 
 @Component({
@@ -22,8 +23,8 @@ export class GameComponent implements OnInit {
   opponentPlayer: Player;
   currentPlayer: Player;
   players: Player[];
-  thisGame;
-  thatGame;
+  localGame: Game;
+  selectedPiece: Piece = null;
 
   constructor(
     private router: Router,
@@ -32,11 +33,35 @@ export class GameComponent implements OnInit {
   
 
   ngOnInit() {
-    this.thisGame = this.gameService.getGame(this.localGameKey);
     this.gameService.getGame(this.localGameKey).subscribe(data => {
-      this.thatGame = new Game(data.players, data.board);
+      this.localGame = new Game(data.players, data.board, data.redGraveyard, data.blueGraveyard);
     });
-    console.log(this.thatGame);  }
+    console.log("localGame: " + this.localGame);
+
+    // console.log("currentplayer: " + this.currentPlayer)
+    console.log("localPlayer: " + this.localPlayer)
+    // console.log("oppenentPlayer: " + this.opponentPlayer)
+  }
+
+  placePiece(clickedSquare: string) { //, piece: Piece = this.selectedPiece
+    let y: number = parseInt(clickedSquare[1]);
+    let x: number = parseInt(clickedSquare[0]);
+
+    if (!this.selectedPiece) { 
+      if(!isNaN(parseInt(this.localGame.board[x][y]))){ return };
+
+      this.selectedPiece = this.localGame.board[x][y];
+      console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
+    
+    }else {
+      this.localGame.board[x][y] = this.selectedPiece;
+      console.log("game.component made localGame.board[" + x + "][" + y + "] = " + this.selectedPiece)
+
+      this.selectedPiece = null;
+    }
+  }
+
+
 
   
   
@@ -53,7 +78,7 @@ export class GameComponent implements OnInit {
   //   }else if (attacker.value > defender.value) {
   //     defender.dies();
       
-  //   }else if (defender.value === 12) {
+  //   }else if (defender.value === 0) {
   //     attacker.winsGame();
 
   //   }else {
@@ -69,6 +94,7 @@ export class GameComponent implements OnInit {
   // }
 
   // dies(squareId: number) {
+
   //   this.graveyard.push(this.board[squareId[0]][squareId[1]]);
   //   this.board[squareId[0]][squareId[1]] = 0;
   // }

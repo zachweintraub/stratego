@@ -1,9 +1,11 @@
-<!-- <h1>Game Goes Here</h1>
-<h2>{{thatGame.players[0].name}}</h2>
-<h3>VS</h3>
-<h2>{{thatGame.players[1].name}}</h2> -->
 
-<app-graveyard></app-graveyard>
+<app-graveyard [color]=(localGame.players[0].color)></app-graveyard>
 <app-inventory></app-inventory>
 <app-board></app-board>
-<app-graveyard-red></app-graveyard-red>
+<app-graveyard [color]=(localGame.players[1].color)></app-graveyard>
+
+
+<h1>Game Goes Here</h1>
+<h2>{{localGame.players[0].name}}</h2>
+<h3>VS</h3>
+<h2>{{localGame.players[1].name}}</h2>
