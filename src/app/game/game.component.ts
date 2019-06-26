@@ -19,36 +19,47 @@ export class GameComponent implements OnInit {
   @Input() localPlayer;
   @Input() localGameKey;
   key: string;
-  board: any[][];
   opponentPlayer: Player;
   currentPlayer: Player;
-  players: Player[];
   localGame: Game;
   selectedPiece: Piece = null;
+
+// board: any[][];
+// players: Player[];
+
 
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private gameService: GameService) { }
   
-
   ngOnInit() {
     this.gameService.getGame(this.localGameKey).subscribe(data => {
       this.localGame = new Game(data.players, data.board, data.redGraveyard, data.blueGraveyard);
     });
-    console.log("localGame: " + this.localGame);
-
-    // console.log("currentplayer: " + this.currentPlayer)
-    console.log("localPlayer: " + this.localPlayer)
-    // console.log("oppenentPlayer: " + this.opponentPlayer)
   }
 
   selectGraveyardPiece(clickedId: string) {
     let color = clickedId[0];
     let position = clickedId.slice(1);
-    // if (!this.selectedPiece && this.localPlayer.color == color) {
-    //   this.selectedPiece = localGame
-    // }
+
+    if(color == "r" && this.localPlayer.color == "r") {
+      this.selectedPiece = this.localGame.redGraveyard[position];
+    }
+    else if(color == "b" && this.localPlayer.color == "b") {
+      this.selectedPiece = this.localGame.blueGraveyard[position];
+    }
+    console.log(this.selectedPiece);
+  }
+
+  placeGraveyardPiece(clickedPosition: string) {
+    if(this.selectedPiece) {
+      let col: number = parseInt(clickedPosition[1]);
+      let row: number = parseInt(clickedPosition[0]);
+      this.localGame.board[row][col] = this.selectedPiece;
+      this.selectedPiece = null;
+      console.log(this.localGame.board);
+    }
   }
 
   placePiece(clickedSquare: string) { //, piece: Piece = this.selectedPiece
@@ -56,7 +67,7 @@ export class GameComponent implements OnInit {
     let x: number = parseInt(clickedSquare[0]);
 
     if (!this.selectedPiece) { 
-      if(!isNaN(parseInt(this.localGame.board[x][y]))){ return };
+      // if(!isNaN(parseInt(this.localGame.board[x][y]))){ return };
 
       this.selectedPiece = this.localGame.board[x][y];
       console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
@@ -69,7 +80,9 @@ export class GameComponent implements OnInit {
     }
   }
 
-
+  submitData() {
+    this.gameService.updateGame(this.localGame, this.localGameKey);
+  }
 
 
 
@@ -104,7 +117,6 @@ export class GameComponent implements OnInit {
   // }
 
   // dies(squareId: number) {
-
   //   this.graveyard.push(this.board[squareId[0]][squareId[1]]);
   //   this.board[squareId[0]][squareId[1]] = 0;
   // }

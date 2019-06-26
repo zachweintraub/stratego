@@ -5,7 +5,7 @@ export class Piece {
         public color: string,
         public movement: number) {
             
-        this.imageUrl = "assests/img/" + color + value + ".jpeg";
+        this.imageUrl = "assets/img/" + color + value + ".jpg";
 
     }
 }

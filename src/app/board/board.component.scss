@@ -19,6 +19,9 @@
   .grass:hover{
     opacity: .5;
   }
+  [class^="water"]:hover{
+    opacity: 1;
+  }
   
   .waterTL {
     background-image: url("../../assets/img/lakeTopL.jpg");
@@ -41,10 +44,9 @@
     background-position: center;
   }
   
-#img{
+#img {
     display: block;
     margin-left: auto;
     margin-right: auto;
     height: 600px;
-
-}
+} 
