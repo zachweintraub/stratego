@@ -110,6 +110,8 @@ export class GameComponent implements OnInit, OnDestroy{
       this.localGame.board[row][col] = 0;
       this.selectedPiece = piece;
     }
+    
+    this.submitData();
   }
 
   placePiece(clickedSquare: string) { 
@@ -117,11 +119,8 @@ export class GameComponent implements OnInit, OnDestroy{
     let x: number = parseInt(clickedSquare[0]);
 
     if (!this.selectedPiece) { 
-      
-
       this.selectedPiece = this.localGame.board[x][y];
       console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
-    
     }else {
       this.localGame.board[x][y] = this.selectedPiece;
       console.log("game.component made localGame.board[" + x + "][" + y + "] = " + this.selectedPiece)

@@ -1,11 +1,11 @@
 
 ![image](./src/assets/img/cover.png)
 
-#Stratego
+# Stratego
 
 This project aims to recreate the classic board game of Stratego.  Stratego is a game in which you need to capture the flag of your opponent while defending your own flag. To capture the flag you use your army of 40 pieces. Pieces have a rank and represent individual officers and soldiers in an army. In addition to those ranked pieces you can use bombs to protect your flag.
 
-#The Game
+# The Game
 
 
 ## Rules
@@ -39,13 +39,13 @@ https://en.wikipedia.org/wiki/Stratego
 
 #The Code
 
-## Player Database Retrieval
-### This sample allows us to connect two players together when the initial link is shared.
+## Client-side/Server-side Piece Comparing
+### This sample allows for the database and our client side pieces to be compared and match.
 ```
 <<Insert>>
 ```
 
-## Piece Database Retrieval
+## Game Database Retrieval
 ### This sample allows us to determine how many pieces remain in the database for the player to utilize.
 ```
 <<Insert>>
@@ -72,7 +72,17 @@ https://en.wikipedia.org/wiki/Stratego
 
 
 
-#To DO
+
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+
+# To DO
 ```
 Placement
     - select pc > highlight/enlarge √
@@ -96,10 +106,3 @@ Combat:
     - show enemy tile
     + results text ??
 ```
-
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
