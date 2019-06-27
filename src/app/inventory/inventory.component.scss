@@ -1,16 +1,18 @@
 .bcover{
-    background-color: rgb(37, 37, 141);
+    background: rgb(37,37,141);
+    background: linear-gradient(180deg, rgba(37,37,141,1) 75%, rgba(52,52,188,0.38327205882352944) 86%, rgba(70,70,245,0) 93%);
     position: absolute;
     width: 600px;
     height: 360px;
     margin-left: 50%;
     left: -300px;
     color: white;
-    transform: translateY(-660px);
+    transform: translateY(-600px);
     z-index: 1;
 }
 .rcover{
-    background-color: rgb(147, 37, 24);
+    background: rgb(147,37,24);
+    background: linear-gradient(0deg, rgba(147,37,24,1) 53%, rgba(192,49,32,1) 75%, rgba(224,57,37,0) 91%);
     position: absolute;
     width: 600px;
     height: 360px;
@@ -20,41 +22,62 @@
     transform: translateY(-360px);
     z-index: 1;
 }
+.rtext{
+    padding-top: 65px;
+}
 h3{
     color: white;
+    padding-left: 275px;
 }
 li{
-    list-style-type: none;
+    list-style-type: square;
 }
 @media screen and (max-width: 600px){
-    .cover{
+    .rcover{
         padding: 10px;
         width: 600px;
-        
+        margin-left: 300px;
     }
-    .no{
-        margin: auto;
-        width: 100px;
-    }
-    li{
+    .bcover{
+        padding: 10px;
         width: 600px;
-        margin-left: -300px;
-        padding: 3%;
+        margin-left: 300px;
     }
-}
-@media screen and (max-width: 480px){
-    .cover{
-        background-color: black;
-        width: 690px;
+    .rtext{
+        margin-left: 300px; 
+    }
+    .btext{
         margin-left: 200px; 
     }
     li{
-        width: 400px;
+        width: 600px;
+    }
+    h3{
+        padding-left: 70px;
+        padding-top: 5px;
+    }
+}
+@media screen and (max-width: 480px){
+    .rcover{
+        width: 690px;
+        height: 390px;
+        margin-left: 200px;
+        padding: 10px; 
+        transform: translateY(-400px);
+    }
+    .rtext{
+        transform: translateY(30px);
+    }
+    .btext{
+        transform: translateY(-30px);
+    }
+    li{
+        width: 480px;
         margin-left: -140px;
     }
 }
 @media screen and (max-width: 390px){
-    .cover{
+    .rcover{
         width: 700px;
     }
 }
