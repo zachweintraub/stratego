@@ -59,3 +59,95 @@ img:hover{
     color: white;
     text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 }
+.rtext{
+    visibility: hidden;
+    width: 55px;
+    background-color: black;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+}
+.btext{
+    visibility: hidden;
+    width: 55px;
+    background-color: black;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 5;
+}
+.b1:hover .btext{
+    visibility: visible;
+}
+.b2:hover .btext{
+    visibility: visible;
+}
+.b3:hover .btext{
+    visibility: visible;
+}
+.b1:hover .btext{
+    visibility: visible;
+}
+.b4:hover .btext{
+    visibility: visible;
+}
+.b5:hover .btext{
+    visibility: visible;
+}
+.b6:hover .btext{
+    visibility: visible;
+}
+.b7:hover .btext{
+    visibility: visible;
+}
+.b8:hover .btext{
+    visibility: visible;
+}
+.b9:hover .btext{
+    visibility: visible;
+}
+.b10:hover .btext{
+    visibility: visible;
+}
+.b11:hover .btext{
+    visibility: visible;
+}
+.r1:hover .rtext{
+    visibility: visible;
+}
+.r2:hover .rtext{
+    visibility: visible;
+}
+.r3:hover .rtext{
+    visibility: visible;
+}
+.r1:hover .rtext{
+    visibility: visible;
+}
+.r4:hover .rtext{
+    visibility: visible;
+}
+.r5:hover .rtext{
+    visibility: visible;
+}
+.r6:hover .rtext{
+    visibility: visible;
+}
+.r7:hover .rtext{
+    visibility: visible;
+}
+.r8:hover .rtext{
+    visibility: visible;
+}
+.r9:hover .rtext{
+    visibility: visible;
+}
+.r10:hover .rtext{
+    visibility: visible;
+}
+.r11:hover .rtext{
+    visibility: visible;
+}
