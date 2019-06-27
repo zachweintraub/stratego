@@ -125,14 +125,53 @@ export class GameComponent implements OnInit, OnDestroy{
     
     this.submitData();
   }
-
+  
   selectBoardPiece(coords: string) {
-
+    
     let row = parseInt(coords[0]);
     let col = parseInt(coords[1]);
     
+
     this.selectedPiece.piece = this.localGame.board[row][col];
     this.selectedPiece.coords = coords;
+    
+    //CALL FIGHT
+    if(this.localGame.board[row][col].color != this.localPlayer.color &&
+      this.isLegalMove(this.selectedPiece.coords, coords)) {
+
+        let attacker = this.selectedPiece.piece;
+        let defender = this.localGame.board[row][col];
+
+        let winner = this.combat(attacker, defender);
+
+        if (winner == attacker) {
+          if (defender.color == 'b') {
+            this.localGame.blueGraveyard[defender.value]["quantity"]++;
+          }else {
+            this.localGame.redGraveyard[defender.value]["quantity"]++;
+          }
+        }
+
+        if (winner == defender) {
+          if (attacker.color == 'b') {
+            this.localGame.blueGraveyard[attacker.value]["quantity"]++;
+          }else {
+            this.localGame.redGraveyard[attacker.value]["quantity"]++;
+          }
+        }
+        
+        if(winner == 0) {
+          this.localGame.redGraveyard[attacker.value]["quantity"]++;
+          this.localGame.blueGraveyard[attacker.value]["quantity"]++;
+        }
+
+        this.localGame.board[row][col] = winner;
+        this.switchTurns();
+        this.submitData();
+      }
+
+
+      
   }
   
   isLegalMove(startPos: string, endPos: string) {
@@ -194,21 +233,15 @@ export class GameComponent implements OnInit, OnDestroy{
   placePiece(endCoords: string) {
 
     if(this.localPlayer.color == this.localGame.currentPlayer && this.selectedPiece.piece.color == this.localPlayer.color){
-      console.log(this.localPlayer.color + " player is moving a " + this.localGame.currentPlayer + "piece");
-
+      
       if(this.isLegalMove(this.selectedPiece.coords, endCoords)) {
         this.localGame.board[this.selectedPiece.coords[0]][this.selectedPiece.coords[1]] = 0;
         this.localGame.board[endCoords[0]][endCoords[1]] = this.selectedPiece.piece;
         this.selectedPiece.piece = null;
         this.selectedPiece.coords = "";
+       
 
-        // this.localGame.currentPlayer == 'b' ? 'r' : 'b';
-
-        if (this.localGame.currentPlayer == 'b' ){
-          this.localGame.currentPlayer = 'r';
-        } else {
-          this.localGame.currentPlayer = 'b';
-        }
+        this.switchTurns();
 
         this.submitData();
       }
@@ -216,6 +249,13 @@ export class GameComponent implements OnInit, OnDestroy{
 
   }
   
+  switchTurns() {
+    if (this.localGame.currentPlayer == 'b' ){
+      this.localGame.currentPlayer = 'r';
+    } else {
+      this.localGame.currentPlayer = 'b';
+    }
+  }
 
   submitData() {
     this.gameService.updateGame(this.localGame, this.localGameKey);
@@ -225,36 +265,30 @@ export class GameComponent implements OnInit, OnDestroy{
 
   
   
-  // combat(attacker: Piece, defender: Piece) {
-  //   if (attacker.value === 3 && defender.value === 11) {
-  //     defender.dies();
+  combat(attacker: Piece, defender: Piece) {
+    if (attacker.value == 3 && defender.value == 11) {
+      return attacker;
 
-  //   }else if (attacker.value === 1 && defender.value === 10) {
-  //     defender.dies();
+    }else if (attacker.value == 1 && defender.value == 10) {
+      return attacker;
 
-  //   }else if (attacker.value === defender.value) {
-  //     attacker.dies() && defender.dies();
+    }else if (attacker.value == defender.value) {
+      return 0;
 
-  //   }else if (attacker.value > defender.value) {
-  //     defender.dies();
+    }else if (attacker.value > defender.value) {
+      return attacker;
       
-  //   }else if (defender.value === 0) {
-  //     attacker.winsGame();
+    }else if (defender.value == 0) {
+      alert(attacker.color + "wins");
+      return attacker;
 
-  //   }else {
-  //     attacker.dies();
-  //   }
-  // }
-
-  // movePiece(piece: Piece, squareId: string) {
-  //   this.board[piece.position.y][piece.position.x] = 0;
-  //   piece.position.y = squareId[0];
-  //   piece.position.x = squareId[1];
-  //   this.board[piece.position.y][piece.position.x] = piece;
-  // }
+    }else {
+      return defender;
+    }
+  }
 
   // dies(squareId: number) {
-  //     attacker.dies();
+  //    
   //   }
   // }
 
