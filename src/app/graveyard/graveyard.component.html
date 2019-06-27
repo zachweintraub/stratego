@@ -14,7 +14,5 @@
     <div><img id="{{color}}0" src="../assets/img/{{color}}0.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[0].quantity}}</div>
   </div>
 
-  <p id="{{color}}">
-    Graveyard
-  </p>
+  <p id="{{color}}"><span *ngIf="color == 'r'">{{players[0].name}}'s </span><span *ngIf="color == 'b' && players[1].name != ''">{{players[1].name}}'s </span>Graveyard</p>
 </div>

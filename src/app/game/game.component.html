@@ -1,5 +1,5 @@
 
-<app-graveyard [color]=(localGame.players[0].color) [thisGraveyard]=(localGame.redGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
+<app-graveyard [color]=(localGame.players[0].color) [thisGraveyard]=(localGame.redGraveyard) [players]="localGame.players" (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
 <app-board 
     [localPlayer]="localPlayer" 
     [localGame]="localGame"
@@ -7,9 +7,10 @@
     (pregameSquareClicked)="placeGraveyardPiece($event)"
     (pregamePieceClicked)="sendToGraveyard($event)"
     (onPieceClicked)="selectBoardPiece($event)"
+    (onEnemyPieceClicked)="combat($event)"
     (onSquareClicked)="placePiece($event)">
 </app-board>
 <app-inventory (onReadyClicked)="readyPlayer($event)" [localPlayer]="localPlayer" [localGame]="localGame" [color]=(localPlayer.color) *ngIf="!localGame.currentPlayer"></app-inventory>
-<app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
+<app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) [players]="localGame.players" (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
 <h5>current turn color: {{localGame.currentPlayer}}</h5>
 <h5>local color: {{localPlayer.color}}</h5>

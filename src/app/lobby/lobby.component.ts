@@ -31,7 +31,7 @@ export class LobbyComponent implements OnInit {
     if(!username) return;
 
     let newPlayer = new Player(username, 'r');
-    let newGame = new Game([newPlayer, new Player(' ', 'b')], 
+    let newGame = new Game([newPlayer, new Player('', 'b')], 
       [
         [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],
         [0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0],

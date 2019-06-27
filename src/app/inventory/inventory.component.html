@@ -12,6 +12,6 @@
       <li>If a player has no moveable pieces, they should give up and never</li>
       <li>A piece may not move back and forth between the same two squares in three consecutive moves.</li>
     </ul>
-    <button  (click)="readyClicked()">Ready!</button> 
+    <button *ngIf="piecesPlaced()" (click)="readyClicked()">Ready!</button> 
   </div>
 </div>

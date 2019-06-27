@@ -83,7 +83,6 @@ export class GameComponent implements OnInit, OnDestroy{
 
       if(this.localGame.board[row][col] == 0){
         this.localGame.board[row][col] = this.selectedPiece.piece;
-        //console.log(this.selectedPiece.color);
   
         if(this.selectedPiece.piece.color == "r") {
           console.log(this.localGame.redGraveyard[this.selectedPiece.piece.value]);
@@ -130,48 +129,9 @@ export class GameComponent implements OnInit, OnDestroy{
     
     let row = parseInt(coords[0]);
     let col = parseInt(coords[1]);
-    
-
     this.selectedPiece.piece = this.localGame.board[row][col];
     this.selectedPiece.coords = coords;
-    
-    //CALL FIGHT
-    if(this.localGame.board[row][col].color != this.localPlayer.color &&
-      this.isLegalMove(this.selectedPiece.coords, coords)) {
 
-        let attacker = this.selectedPiece.piece;
-        let defender = this.localGame.board[row][col];
-
-        let winner = this.combat(attacker, defender);
-
-        if (winner == attacker) {
-          if (defender.color == 'b') {
-            this.localGame.blueGraveyard[defender.value]["quantity"]++;
-          }else {
-            this.localGame.redGraveyard[defender.value]["quantity"]++;
-          }
-        }
-
-        if (winner == defender) {
-          if (attacker.color == 'b') {
-            this.localGame.blueGraveyard[attacker.value]["quantity"]++;
-          }else {
-            this.localGame.redGraveyard[attacker.value]["quantity"]++;
-          }
-        }
-        
-        if(winner == 0) {
-          this.localGame.redGraveyard[attacker.value]["quantity"]++;
-          this.localGame.blueGraveyard[attacker.value]["quantity"]++;
-        }
-
-        this.localGame.board[row][col] = winner;
-        this.switchTurns();
-        this.submitData();
-      }
-
-
-      
   }
   
   isLegalMove(startPos: string, endPos: string) {
@@ -240,9 +200,7 @@ export class GameComponent implements OnInit, OnDestroy{
         this.selectedPiece.piece = null;
         this.selectedPiece.coords = "";
        
-
         this.switchTurns();
-
         this.submitData();
       }
     }
@@ -261,35 +219,50 @@ export class GameComponent implements OnInit, OnDestroy{
     this.gameService.updateGame(this.localGame, this.localGameKey);
   }
 
+  combat(coords: string) {
 
+    if(!this.selectedPiece.piece) return;
 
-  
-  
-  combat(attacker: Piece, defender: Piece) {
+    let attacker = this.selectedPiece.piece;
+    let defender = this.localGame.board[coords[0]][coords[1]];
+    let winner;
+
+    if (!this.isLegalMove(this.selectedPiece.coords, coords)) return;
+
     if (attacker.value == 3 && defender.value == 11) {
-      return attacker;
 
+      console.log(attacker.color +" " + attacker.value + " won")
+      winner = attacker;
+            
     }else if (attacker.value == 1 && defender.value == 10) {
-      return attacker;
-
+      console.log(attacker.color + " won")
+      winner = attacker;
+      
     }else if (attacker.value == defender.value) {
-      return 0;
-
-    }else if (attacker.value > defender.value) {
-      return attacker;
+      console.log("both lose")
+      winner = 0;
       
     }else if (defender.value == 0) {
+      winner = attacker;
       alert(attacker.color + "wins");
-      return attacker;
+
+    }else if (attacker.value > defender.value) {      
+      console.log(attacker.color + " won")
+      winner = attacker;
 
     }else {
-      return defender;
+      console.log(defender.value + defender.color + " wins");
+      winner = defender;
     }
-  }
 
-  // dies(squareId: number) {
-  //    
-  //   }
-  // }
+    console.log("WINNER: " + winner.color + winner.value);
+
+    this.localGame.board[this.selectedPiece.coords[0]][this.selectedPiece.coords[1]] = 0;
+    this.localGame.board[coords[0]][coords[1]] = winner;
+    this.selectedPiece.piece = null;
+    this.selectedPiece.coords = "";
+    this.switchTurns();
+    this.submitData();
+  }
 
 }

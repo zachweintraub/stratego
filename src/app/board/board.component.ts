@@ -12,6 +12,7 @@ export class BoardComponent implements OnInit {
   @Output() pregameSquareClicked = new EventEmitter()
   @Output() onPieceClicked = new EventEmitter()
   @Output() onSquareClicked = new EventEmitter()
+  @Output() onEnemyPieceClicked = new EventEmitter()
   @Input() localGame;
   @Input() localPlayer;
   @Input() flatBoard;
@@ -36,8 +37,15 @@ export class BoardComponent implements OnInit {
     }
     else {
 
+      //if its your turn
       if(this.localGame.currentPlayer == this.localPlayer.color) {
-        this.onPieceClicked.emit(coords)
+
+        if(this.localPlayer.color == this.localGame.board[row][col].color) {
+          this.onPieceClicked.emit(coords)
+        }
+        else {
+          this.onEnemyPieceClicked.emit(coords);
+        }
       }      
     }
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Piece } from '../models/piece';
+import { Player } from '../models/player';
 
 @Component({
   selector: 'app-graveyard',
@@ -13,6 +14,7 @@ export class GraveyardComponent implements OnInit {
   @Output() onGraveyardPieceClicked = new EventEmitter();
   @Input() color: string;
   @Input() thisGraveyard: Object[];
+  @Input() players: Player[];
 
   ngOnInit() {
   }
