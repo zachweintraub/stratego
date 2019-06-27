@@ -11,3 +11,5 @@
 </app-board>
 <app-inventory (onReadyClicked)="readyPlayer($event)" [localPlayer]="localPlayer" [localGame]="localGame" [color]=(localPlayer.color) *ngIf="!localGame.currentPlayer"></app-inventory>
 <app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
+<h5>current turn color: {{localGame.currentPlayer}}</h5>
+<h5>local color: {{localPlayer.color}}</h5>

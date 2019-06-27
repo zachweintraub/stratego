@@ -57,9 +57,9 @@ export class BoardComponent implements OnInit {
       }
     else {
       
-      if(this.localGame.currentPlayer == this.localPlayer.color) {
+      // if(this.localGame.currentPlayer == this.localPlayer.color) {
         this.onSquareClicked.emit(coords);
-      }
+      // }
     }
 
   }

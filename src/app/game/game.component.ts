@@ -145,27 +145,22 @@ export class GameComponent implements OnInit, OnDestroy{
     
     let piece = this.localGame.board[startRow][startCol];
 
-    if(this.localGame.board[endRow][endCol].color == this.localPlayer.color) {
+    if(this.localGame.board[endRow][endCol].color == this.localPlayer.color ) {
       this.selectBoardPiece(endPos);
       return false;
     }
     if(startRow == endRow || startCol == endCol) {
       console.log("move is a staight line");
-      if(Math.abs(endCol - startCol) <= piece["movement"]) {
-        console.log('move distance is valid for this piece');
-        if(startRow == endRow) {
-          for(let i = (Math.min(startCol, endCol) + 1); i < (Math.max(startCol, endCol) - 1); i++) {
-            if(this.localGame.board[startRow][i] != 0 && this.localGame.board[startRow][i] != -1) {
-              console.log("vertical move, can't move past another piece");
-              return false;
-            }
-          }
-          console.log("valid move");
-          return true;
-        }
-        if(startCol == endCol) {
-          for(let i = (Math.min(startRow, endRow) + 1); i < (Math.max(startRow, endRow) - 1); i++) {
-            if(this.localGame.board[i][startCol] != 0) {
+
+      //Moving horizontal
+      if(startRow == endRow) {
+        
+        if(Math.abs(endCol - startCol) <= piece["movement"]) {
+          console.log('move distance is valid for this piece');
+          
+          // Piece in the way?
+          for(let i = Math.min(startCol, endCol)+1; i < Math.max(startCol, endCol); i++) {
+            if(this.localGame.board[startRow][i] != 0 || this.localGame.board[startRow][i] == -1) {
               console.log("horizontal move, can't move past another piece");
               return false;
             }
@@ -173,31 +168,54 @@ export class GameComponent implements OnInit, OnDestroy{
           console.log("valid move");
           return true;
         }
-      } 
-    } else{ 
-      console.log("not straight line");
-      return false;
+      }  
+        //Moving vertical
+      if(startCol == endCol) {
+        
+        if(Math.abs(endRow - startRow) <= piece["movement"])
+        {
+          console.log('move distance is valid for this piece');
+          for(let i = Math.min(startRow, endRow)+1; i < Math.max(startRow, endRow); i++) {
+            if(this.localGame.board[i][startCol] != 0 || this.localGame.board[i][startCol] == -1) {
+              console.log("vertical move, can't move past another piece");
+              return false;
+            }
+          }
+            console.log("valid move");
+            return true;
+        }
+      } else{ 
+        console.log("not straight line");
+        return false;
+      }
     }
   }
 
   placePiece(endCoords: string) {
-    this.isLegalMove(this.selectedPiece.coords, endCoords);
+
+    if(this.localPlayer.color == this.localGame.currentPlayer && this.selectedPiece.piece.color == this.localPlayer.color){
+      console.log(this.localPlayer.color + " player is moving a " + this.localGame.currentPlayer + "piece");
+
+      if(this.isLegalMove(this.selectedPiece.coords, endCoords)) {
+        this.localGame.board[this.selectedPiece.coords[0]][this.selectedPiece.coords[1]] = 0;
+        this.localGame.board[endCoords[0]][endCoords[1]] = this.selectedPiece.piece;
+        this.selectedPiece.piece = null;
+        this.selectedPiece.coords = "";
+
+        // this.localGame.currentPlayer == 'b' ? 'r' : 'b';
+
+        if (this.localGame.currentPlayer == 'b' ){
+          this.localGame.currentPlayer = 'r';
+        } else {
+          this.localGame.currentPlayer = 'b';
+        }
+
+        this.submitData();
+      }
+    }
+
   }
-
-  // placePiece(clickedSquare: string) { 
-  //   let y: number = parseInt(clickedSquare[1]);
-  //   let x: number = parseInt(clickedSquare[0]);
-
-  //   if (!this.selectedPiece) { 
-  //     this.selectedPiece = this.localGame.board[x][y];
-  //     console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
-  //   }else {
-  //     this.localGame.board[x][y] = this.selectedPiece;
-  //     console.log("game.component made localGame.board[" + x + "][" + y + "] = " + this.selectedPiece)
-
-  //     this.selectedPiece = null;
-  //   }
-  // }
+  
 
   submitData() {
     this.gameService.updateGame(this.localGame, this.localGameKey);
