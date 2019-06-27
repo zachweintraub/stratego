@@ -55,7 +55,7 @@ https://en.wikipedia.org/wiki/Stratego
 3. Copy the code that pops up and send it to your friend.
 
 #### Join Game
-![image](./src/assets/img/NewGame.png)
+![image](./src/assets/img/JoinGame.png)
 1. Input player name in the bottom left box.
 2. Paste the code that was provided by the opponent.
 3. Press the Join Game button.
