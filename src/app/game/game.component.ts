@@ -19,12 +19,12 @@ export class GameComponent implements OnInit, OnDestroy{
   @Input() localPlayer;
   @Input() localGameKey;
   localGame: Game;
-  selectedPiece: Piece;
+  selectedPiece: {piece: Piece, coords: string};
 
   constructor(
-    private router: Router,
-    private activeRoute: ActivatedRoute,
-    private gameService: GameService) { }
+    private gameService: GameService) { 
+      this.selectedPiece = {piece: null, coords: ""}
+    }
   
   ngOnInit() {
     this.gameService.getGame(this.localGameKey).subscribe(data => {
@@ -65,40 +65,38 @@ export class GameComponent implements OnInit, OnDestroy{
   
       if(color == "r" && this.localPlayer.color == "r") {
         if(this.localGame.redGraveyard[position].quantity <=0) return;
-        this.selectedPiece = this.localGame.redGraveyard[position].piece;
-  
-        console.log("boop: " + this.selectedPiece.color);
+        this.selectedPiece.piece = this.localGame.redGraveyard[position].piece;
+        this.selectedPiece.coords = "";
       }
       else if(color == "b" && this.localPlayer.color == "b") {
         if(this.localGame.blueGraveyard[position].quantity <=0) return;
-        this.selectedPiece = this.localGame.blueGraveyard[position].piece;
-  
-        console.log("boop: " + this.selectedPiece.color);
+        this.selectedPiece.piece = this.localGame.blueGraveyard[position].piece;
+        this.selectedPiece.coords = "";
       }
     }
   }
 
   placeGraveyardPiece(clickedPosition: string) {
-    if(this.selectedPiece) {
+    if(this.selectedPiece.piece) {
       let col: number = parseInt(clickedPosition[1]);
       let row: number = parseInt(clickedPosition[0]);
 
       if(this.localGame.board[row][col] == 0){
-        this.localGame.board[row][col] = this.selectedPiece;
+        this.localGame.board[row][col] = this.selectedPiece.piece;
         //console.log(this.selectedPiece.color);
   
-        if(this.selectedPiece.color == "r") {
-          console.log(this.localGame.redGraveyard[this.selectedPiece.value]);
-          this.localGame.redGraveyard[this.selectedPiece.value]["quantity"]--;
-          if(this.localGame.redGraveyard[this.selectedPiece.value]["quantity"] < 1) {
-            this.selectedPiece = null;
+        if(this.selectedPiece.piece.color == "r") {
+          console.log(this.localGame.redGraveyard[this.selectedPiece.piece.value]);
+          this.localGame.redGraveyard[this.selectedPiece.piece.value]["quantity"]--;
+          if(this.localGame.redGraveyard[this.selectedPiece.piece.value]["quantity"] < 1) {
+            this.selectedPiece.piece = null;
           }
         }
-        else if(this.selectedPiece.color == "b") {
-          console.log(this.localGame.blueGraveyard[this.selectedPiece.value]);
-          this.localGame.blueGraveyard[this.selectedPiece.value]["quantity"]--;
-          if(this.localGame.blueGraveyard[this.selectedPiece.value]["quantity"] < 1) {
-            this.selectedPiece = null;
+        else if(this.selectedPiece.piece.color == "b") {
+          console.log(this.localGame.blueGraveyard[this.selectedPiece.piece.value]);
+          this.localGame.blueGraveyard[this.selectedPiece.piece.value]["quantity"]--;
+          if(this.localGame.blueGraveyard[this.selectedPiece.piece.value]["quantity"] < 1) {
+            this.selectedPiece.piece = null;
           }
         }
         this.submitData();
@@ -116,16 +114,74 @@ export class GameComponent implements OnInit, OnDestroy{
     if(piece.color == 'b' && this.localPlayer.color == 'b') {
       this.localGame.blueGraveyard[piece.value]["quantity"]++;
       this.localGame.board[row][col] = 0;
-      this.selectedPiece = piece;
+      this.selectedPiece.piece = piece;
+      this.selectedPiece.coords = "";
     } else if(piece.color == 'r' && this.localPlayer.color == 'r') {
-
-      console.log("here");
       this.localGame.redGraveyard[piece.value]["quantity"]++;
       this.localGame.board[row][col] = 0;
-      this.selectedPiece = piece;
+      this.selectedPiece.piece = piece;
+      this.selectedPiece.coords = "";
     }
     
     this.submitData();
+  }
+
+  selectBoardPiece(coords: string) {
+
+    let row = parseInt(coords[0]);
+    let col = parseInt(coords[1]);
+    
+    this.selectedPiece.piece = this.localGame.board[row][col];
+    this.selectedPiece.coords = coords;
+  }
+  
+  isLegalMove(startPos: string, endPos: string) {
+
+    
+    let startRow = parseInt(startPos[0]);
+    let startCol = parseInt(startPos[1]);
+    let endRow = parseInt(endPos[0]);
+    let endCol = parseInt(endPos[1]);
+    
+    let piece = this.localGame.board[startRow][startCol];
+
+    if(this.localGame.board[endRow][endCol].color == this.localPlayer.color) {
+      this.selectBoardPiece(endPos);
+      return false;
+    }
+    if(startRow == endRow || startCol == endCol) {
+      console.log("move is a staight line");
+      if(Math.abs(endCol - startCol) <= piece["movement"]) {
+        console.log('move distance is valid for this piece');
+        if(startRow == endRow) {
+          for(let i = (Math.min(startCol, endCol) + 1); i < (Math.max(startCol, endCol) - 1); i++) {
+            if(this.localGame.board[startRow][i] != 0 && this.localGame.board[startRow][i] != -1) {
+              console.log("vertical move, can't move past another piece");
+              return false;
+            }
+          }
+          console.log("valid move");
+          return true;
+        }
+        if(startCol == endCol) {
+          for(let i = (Math.min(startRow, endRow) + 1); i < (Math.max(startRow, endRow) - 1); i++) {
+            if(this.localGame.board[i][startCol] != 0) {
+              console.log("horizontal move, can't move past another piece");
+              return false;
+            }
+          }
+          console.log("valid move");
+          return true;
+        }
+      } 
+    } else{ 
+      console.log("not straight line");
+      return false;
+    }
+  }
+
+  placePiece(endCoords: string) {
+    this.isLegalMove(this.selectedPiece.coords, endCoords);
   }
 
   // placePiece(clickedSquare: string) { 
