@@ -9,3 +9,9 @@
 </app-board>
 <app-inventory [localPlayer]="localPlayer" [color]=(localPlayer.color) *ngIf="currentPlayer == null"></app-inventory>
 <app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
+<div class="player1">
+    <h3>{{localGame.players[0].name}}</h3>
+</div>
+<div class="player2">
+    <h3>{{localGame.players[1].name}}</h3>
+</div>
