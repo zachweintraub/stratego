@@ -18,14 +18,8 @@ export class GameComponent implements OnInit, OnDestroy{
  
   @Input() localPlayer;
   @Input() localGameKey;
-  //key: string;
-  //opponentPlayer: Player;
-  //currentPlayer: Player;
   localGame: Game;
   selectedPiece: Piece;
-
-// board: any[][];
-// players: Player[];
 
   constructor(
     private router: Router,
@@ -34,7 +28,7 @@ export class GameComponent implements OnInit, OnDestroy{
   
   ngOnInit() {
     this.gameService.getGame(this.localGameKey).subscribe(data => {
-      this.localGame = new Game(data.players, data.board, data.redGraveyard, data.blueGraveyard);
+      this.localGame = new Game(data.players, data.board, data.redGraveyard, data.blueGraveyard, data.currentPlayer);
     });
   }
   
@@ -42,6 +36,26 @@ export class GameComponent implements OnInit, OnDestroy{
     this.gameService.destroyGame(this.localGameKey);
     console.log("i am destroyed");
 
+  }
+
+  readyPlayer(player: Player) {
+    if(player.color == 'r') {
+      this.localGame.players[0].ready = true;
+    } else if(player.color == 'b') {
+      this.localGame.players[1].ready = true;
+    }
+    this.submitData();
+    
+    if(this.localGame.players[0].ready && this.localGame.players[1].ready) {
+      this.localGame.currentPlayer = this.randomizePlayer();
+      console.log(this.localGame.currentPlayer);
+      this.submitData();
+    }
+    
+  }
+
+  randomizePlayer(): string {
+    return (Math.random() > 0.5) ? 'r': 'b';
   }
 
   selectGraveyardPiece(clickedId: string) {
@@ -114,20 +128,20 @@ export class GameComponent implements OnInit, OnDestroy{
     this.submitData();
   }
 
-  placePiece(clickedSquare: string) { 
-    let y: number = parseInt(clickedSquare[1]);
-    let x: number = parseInt(clickedSquare[0]);
+  // placePiece(clickedSquare: string) { 
+  //   let y: number = parseInt(clickedSquare[1]);
+  //   let x: number = parseInt(clickedSquare[0]);
 
-    if (!this.selectedPiece) { 
-      this.selectedPiece = this.localGame.board[x][y];
-      console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
-    }else {
-      this.localGame.board[x][y] = this.selectedPiece;
-      console.log("game.component made localGame.board[" + x + "][" + y + "] = " + this.selectedPiece)
+  //   if (!this.selectedPiece) { 
+  //     this.selectedPiece = this.localGame.board[x][y];
+  //     console.log("game.component is selecting a piece: " + this.selectedPiece + " from square " + x.toString() + y.toString());
+  //   }else {
+  //     this.localGame.board[x][y] = this.selectedPiece;
+  //     console.log("game.component made localGame.board[" + x + "][" + y + "] = " + this.selectedPiece)
 
-      this.selectedPiece = null;
-    }
-  }
+  //     this.selectedPiece = null;
+  //   }
+  // }
 
   submitData() {
     this.gameService.updateGame(this.localGame, this.localGameKey);

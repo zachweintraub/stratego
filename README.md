@@ -48,13 +48,20 @@ https://en.wikipedia.org/wiki/Stratego
 - This game can be found at <<Insert>>
 
 ## Game Setup
+#### New Game
+![image](./src/assets/img/CreateGame.png)
+1. Input player name on the top box.
+2. Press Create Game button.
+3. Copy the code that pops up and send it to your friend.
 
-| Method | Instructions |
-| :----- | :----------- |
-| New Game | 1. Input Player name on the top box. 2. Press Create Game. 3. Copy the code that pops up and send it to your friend |
-| Join Game | 1. Input Player name in the bottom left box. 2. Paste the code provided by the opponent. 3. Press Join Game |
+#### Join Game
+![image](./src/assets/img/NewGame.png)
+1. Input player name in the bottom left box.
+2. Paste the code that was provided by the opponent.
+3. Press the Join Game button.
 
-#The Code
+
+# The Code
 
 ## Client-side/Server-side Piece Comparing
 ### This sample allows for the database and our client side pieces to be compared and match.
@@ -101,10 +108,12 @@ Placement
     + captured (GY) pcs not selectable after game starts
 Initialize:
     - both players click ready button
+        + ready player sees "waiting on other player to ready"
     - host player clicks start game
     - local data from both players sent to DB
 Movement:
     - one square for all but Scout
+        - scout moves as many as it wants in a single straight line
     - can't move to space occupied by your own
     - if landing on square occupied by enemy initiate combat()
     - no diagonal
