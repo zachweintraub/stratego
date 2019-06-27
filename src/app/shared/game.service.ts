@@ -17,6 +17,7 @@ export class GameService implements OnInit{
   
   ngOnInit() {
     this.games = this.database.list('games');
+    this.destroyGame("-LiOVQHCAYgeKmXUFcCN");
   }
 
   getGame(key: string) {
@@ -33,7 +34,13 @@ export class GameService implements OnInit{
       players: localGame.players,
       board: localGame.board,
       redGraveyard: localGame.redGraveyard,
-      blueGraveyard: localGame.blueGraveyard
+      blueGraveyard: localGame.blueGraveyard,
+      currentPlayer: localGame.currentPlayer
     });
+  }
+
+  destroyGame(localGameKey: string) {
+    let databaseGame = this.getGame(localGameKey);
+    databaseGame.remove();
   }
 }

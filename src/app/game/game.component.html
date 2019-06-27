@@ -1,5 +1,11 @@
 
 <app-graveyard [color]=(localGame.players[0].color) [thisGraveyard]=(localGame.redGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
-<app-board [flatBoard]="localGame.board.flat()" (onSquareClicked)="placeGraveyardPiece($event)"></app-board>
+<app-board 
+    [localPlayer]="localPlayer" 
+    [localGame]="localGame"
+    [flatBoard]="localGame.board.flat()"
+    (pregameSquareClicked)="placeGraveyardPiece($event)"
+    (pregamePieceClicked)="sendToGraveyard($event)">
+</app-board>
 <app-inventory [color]=(localPlayer.color)></app-inventory>
 <app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
