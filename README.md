@@ -37,6 +37,23 @@ https://en.wikipedia.org/wiki/Stratego
 | <center>**General**</center>| ![image](./src/assets/img/r9.jpg) | [9] | 1 | None. |
 | <center>**Marshal**</center>| ![image](./src/assets/img/r10.jpg) | [10] | 1 | None. |
 
+## Win Condition
+
+- Capture the Opponents flag
+
+# Setup
+
+## Where to play
+
+- This game can be found at <<Insert>>
+
+## Game Setup
+
+| Method | Instructions |
+| :----- | :----------- |
+| New Game | 1. Input Player name on the top box. 2. Press Create Game. 3. Copy the code that pops up and send it to your friend |
+| Join Game | 1. Input Player name in the bottom left box. 2. Paste the code provided by the opponent. 3. Press Join Game |
+
 #The Code
 
 ## Client-side/Server-side Piece Comparing
@@ -69,11 +86,7 @@ https://en.wikipedia.org/wiki/Stratego
 <<Insert>>
 ```
 
-
-
-
-
-
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
@@ -85,10 +98,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 # To DO
 ```
 Placement
-    - select pc > highlight/enlarge √
-    - select tile to drop pc into √
-    - select placed pcs and replace them on another tile √
-    - cant drop multiple pcs on one tile √
     + captured (GY) pcs not selectable after game starts
 Initialize:
     - both players click ready button
@@ -98,11 +107,37 @@ Movement:
     - one square for all but Scout
     - can't move to space occupied by your own
     - if landing on square occupied by enemy initiate combat()
-    +
-    + no diagonal
-    + no lake
-    + highlight available movements ??
+    - no diagonal
+    - no lake
+    - highlight available movements ??
 Combat:
     - show enemy tile
-    + results text ??
+    - results text ??
 ```
+
+## Known Bugs
+<<Insert>>
+
+## Support and contact details
+
+If you have any issues please contact:
+
+* Brendan Hellar - bwhellar@gmail.com
+* Zach Weintraub - zachweintraub@gmail.com
+* Dylan Crocker - dylan.t.crocker@gmail.com
+* Crystal Fecteau - Crystal_Fecteau@ymail.com
+* Kyle Harrington - harrington.kyle@gmail.com
+
+## Technologies Used
+
+* HTML
+* CSS
+* JavaScript
+* Angular
+* Firebase (Database)
+
+### License
+
+*This software is licensed under the MIT license*
+
+Copyright (c) 2019**_{Brendan Hellar, Zach Weintraub, Dylan Crocker, Crystal Fecteau, Kyle Harrington}_

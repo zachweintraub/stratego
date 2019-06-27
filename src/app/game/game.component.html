@@ -7,5 +7,5 @@
     (pregameSquareClicked)="placeGraveyardPiece($event)"
     (pregamePieceClicked)="sendToGraveyard($event)">
 </app-board>
-<app-inventory [color]=(localPlayer.color)></app-inventory>
+<app-inventory [localPlayer]="localPlayer" [color]=(localPlayer.color) *ngIf="currentPlayer == null"></app-inventory>
 <app-graveyard [color]=(localGame.players[1].color) [thisGraveyard]=(localGame.blueGraveyard) (onGraveyardPieceClicked)="selectGraveyardPiece($event)"></app-graveyard>
