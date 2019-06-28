@@ -42,5 +42,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-#api info
+#api info / firebase
 firebaseApi.ts
+.firebase
+.firebaserc
+database.rules.json
+firebase.json
