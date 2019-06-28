@@ -44,7 +44,7 @@ https://en.wikipedia.org/wiki/Stratego
 
 ## Where to play
 
-- This game can be found at <<Insert>>
+- The deployed game can be found [here](https://stratego-57462.firebaseapp.com/)
 
 ## Game Setup
 #### New Game
