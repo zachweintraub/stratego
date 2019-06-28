@@ -1,83 +1,85 @@
 
 .bFlex{
-    position: relative;
-    color: white;
-    margin: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 2%;
-    
+  position: relative;
+  color: white;
+  margin: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2%;
 }
 .bCon{
-    background-color: rgb(49, 49, 161);
-    height: 200px;
-    width: 600px;
-    color: white;
-    text-align: center;
-    margin: 0 auto;
-    object-fit: center;
-    transform: translateY(-40px);
+  background-color: rgb(49, 49, 161);
+  height: 200px;
+  width: 600px;
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  object-fit: center;
+  transform: translateY(-40px);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 } 
-
 .rFlex{
-    position: relative;
-    color: white;
-    margin: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 2%;
+  position: relative;
+  color: white;
+  margin: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2%;
 }
 .rCon{
-    background-color: rgb(161, 49, 49);
-    height: 200px;
-    width: 600px;
-    color: white;
-    text-align: center;
-    margin: 0 auto;
-    object-fit: center;
+  background-color: rgb(161, 49, 49);
+  height: 200px;
+  width: 600px;
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  object-fit: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 img{
-    height: 45px;
-    transition: transform .2s;
+  height: 45px;
+  transition: transform .2s;
 }
 img:hover{
-    -ms-transform: scale(1.5); 
-    -webkit-transform: scale(1.5);
-    transform: scale(1.5);
+  -ms-transform: scale(1.5); 
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
 }
 .placement{
-    margin-top: -16px;
+  margin-top: -16px;
 }
 #r{
-    padding-top: 20px;
-    color: white;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  padding-top: 20px;
+  color: white;
+  text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 }
 #b{
-    color: white;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  color: white;
+  text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 }
 .rtext{
-    visibility: hidden;
-    width: 55px;
-    background-color: black;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
+  visibility: hidden;
+  width: 55px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 5;
 }
 .btext{
-    visibility: hidden;
-    width: 55px;
-    background-color: black;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 5;
+  visibility: hidden;
+  width: 55px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 5;
 }
 .b1:hover .btext{
     visibility: visible;

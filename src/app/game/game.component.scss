@@ -1,31 +1,36 @@
 .player1{
-    text-align: center;
-    margin: 0 auto;
-    transform: translateY(-920px);
-    z-index: 3;
-    color: white;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  text-align: center;
+  margin: 0 auto;
+  transform: translateY(-920px);
+  z-index: 3;
+  color: white;
+  text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 }
 .player2{
-    text-align: center;
-    margin: 0 auto;
-    transform: translateY(-170px);
-    z-index: 3;
-    color: white;
-    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  text-align: center;
+  margin: 0 auto;
+  transform: translateY(-170px);
+  z-index: 3;
+  color: white;
+  text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
 }
+
+app-graveyard{
+  box-shadow: 20px 20px 20px black;
+}
+
 @media screen and (max-width:600px){
-    .player1, .player2{
-      margin-left: 500px;
-    }
+  .player1, .player2{
+    margin-left: 500px;
+  }
 }
 @media screen and (max-width:480px){
-    .player1, .player2{
-      margin-left: 200px;
-    }
+  .player1, .player2{
+    margin-left: 200px;
+  }
 }
 @media screen and (max-width:390px){
-    .player1, .player2{
-      margin-left: 250px;
-    }
+  .player1, .player2{
+    margin-left: 250px;
+  }
 }
