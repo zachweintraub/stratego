@@ -26,7 +26,7 @@ https://en.wikipedia.org/wiki/Stratego
 | <center>**Flag**</center>| ![image](./src/assets/img/r0.jpg)| None | 1 | Must be defended at all costs.  The game ends when yours is captured |
 | <center>**Bomb**</center>| ![image](./src/assets/img/r11.jpg) | [0] | 6 | Able to defeat all pieces except Miners but unable to move. |
 | <center>**Spy**</center>| ![image](./src/assets/img/r1.jpg) | [1] | 1 | Defeated by all pieces but able to defeat the Marshal(10) if attacking first. |
-| <center>**Scout**</center>| ![image](./src/assets/img/r2.jpg) | [2] | 8 | Able to move as many squares empty squares as it chooses to. |
+| <center>**Scout**</center>| ![image](./src/assets/img/r2.jpg) | [2] | 8 | Able to move as many empty squares as it chooses to. |
 | <center>**Miner**</center>| ![image](./src/assets/img/r3.jpg) | [3] | 5 | Able to diffuse bombs without taking damage. |
 | <center>**Sergeant**</center>| ![image](./src/assets/img/r4.jpg) | [4] | 5 | None. |
 | <center>**Lieutenant**</center>| ![image](./src/assets/img/r5.jpg) | [5] | 4 | None. |
