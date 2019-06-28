@@ -7,7 +7,6 @@ This project aims to recreate the classic board game of Stratego.  Stratego is a
 
 # The Game
 
-
 ## Rules
 The general game rules are as follows.
 - Flags and bombs can't be moved once the game begins.
@@ -93,19 +92,10 @@ https://en.wikipedia.org/wiki/Stratego
 <<Insert>>
 ```
 
-## Angular
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-
 # To DO
 ```
 Placement
-    + captured (GY) pcs not selectable after game starts
+    - captured (GY) pcs not selectable after game starts
 Initialize:
     - both players click ready button
         + ready player sees "waiting on other player to ready"
@@ -125,7 +115,7 @@ Combat:
 ```
 
 ## Known Bugs
-<<Insert>>
+* If players place a piece at the same time, the server can erase one of the placements.
 
 ## Support and contact details
 
@@ -144,6 +134,14 @@ If you have any issues please contact:
 * JavaScript
 * Angular
 * Firebase (Database)
+
+## Angular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ### License
 
