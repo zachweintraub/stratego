@@ -23,6 +23,7 @@ export class InventoryComponent implements OnInit {
     if(this.localPlayer.color == 'r') {
       for(let piece of this.localGame.redGraveyard) {
         if(piece["quantity"] > 0) {
+          this.localPlayer.ready = false;
           return false;
         }
       }
@@ -31,6 +32,7 @@ export class InventoryComponent implements OnInit {
     if(this.localPlayer.color == 'b') {
       for(let piece of this.localGame.blueGraveyard) {
         if(piece["quantity"] > 0) {
+          this.localPlayer.ready = false;
           return false;
         }
       }
@@ -39,6 +41,7 @@ export class InventoryComponent implements OnInit {
   }
 
   readyClicked() {
+    this.localPlayer.ready = true;
     this.onReadyClicked.emit(this.localPlayer);
   }
 

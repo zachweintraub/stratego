@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { GameService } from '../shared/game.service';
 import { Player } from '../models/player';
 import { Game } from '../models/game';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Piece } from '../models/piece';
 
 
