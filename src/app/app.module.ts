@@ -10,6 +10,7 @@ import { firebaseConfig } from '../firebaseApi';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { LobbyComponent } from './lobby/lobby.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 export const firebase = {
@@ -26,7 +27,8 @@ export const firebase = {
     GraveyardComponent,
     InventoryComponent,
     GameComponent,
-    LobbyComponent
+    LobbyComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

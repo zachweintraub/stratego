@@ -6,6 +6,7 @@ import { Piece } from '../models/piece';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { text } from '@angular/core/src/render3/instructions';
 // import { reject } from 'q';
 // import { resolve } from 'dns';
 
@@ -81,6 +82,7 @@ export class LobbyComponent implements OnInit {
     // TEMP 
     alert("Share this key with your friend: " + dbGame.key)
   }
+  
   
   joinGame(username: string, gameKey: string) {
     if(!username || !gameKey) return;

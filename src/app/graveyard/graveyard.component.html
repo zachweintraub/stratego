@@ -1,18 +1,19 @@
 <div class="{{color}}Con">
-  <div class="{{color}}Flex">
-    <div><img id="{{color}}1" src="../assets/img/{{color}}1.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[1].quantity}}</div>
-    <div><img id="{{color}}2" src="../assets/img/{{color}}2.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[2].quantity}}</div>
-    <div><img id="{{color}}3" src="../assets/img/{{color}}3.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[3].quantity}}</div>
-    <div><img id="{{color}}4" src="../assets/img/{{color}}4.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[4].quantity}}</div>
-    <div><img id="{{color}}5" src="../assets/img/{{color}}5.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[5].quantity}}</div>
-    <div><img id="{{color}}6" src="../assets/img/{{color}}6.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[6].quantity}}</div>
-    <div><img id="{{color}}7" src="../assets/img/{{color}}7.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[7].quantity}}</div>
-    <div><img id="{{color}}8" src="../assets/img/{{color}}8.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[8].quantity}}</div>
-    <div><img id="{{color}}9" src="../assets/img/{{color}}9.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[9].quantity}}</div>
-    <div><img id="{{color}}10" src="../assets/img/{{color}}10.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[10].quantity}}</div>
-    <div><img id="{{color}}11" src="../assets/img/{{color}}11.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[11].quantity}}</div>
-    <div><img id="{{color}}0" src="../assets/img/{{color}}0.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[0].quantity}}</div>
+  <div class="toolTip">
+      <div class="{{color}}Flex">
+          <div class="{{color}}1"><img id="{{color}}1" src="../assets/img/{{color}}1.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[1].quantity}}<span class="{{color}}text">Spy(1)</span></div>
+          <div class="{{color}}2"><img id="{{color}}2" src="../assets/img/{{color}}2.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[2].quantity}}<span class="{{color}}text">Scout(2)</span></div>
+          <div class="{{color}}3"><img id="{{color}}3" src="../assets/img/{{color}}3.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[3].quantity}}<span class="{{color}}text">Miner(3)</span></div>
+          <div class="{{color}}4"><img id="{{color}}4" src="../assets/img/{{color}}4.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[4].quantity}}<span class="{{color}}text">Sergeant(4)</span></div>
+          <div class="{{color}}5"><img id="{{color}}5" src="../assets/img/{{color}}5.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[5].quantity}}<span class="{{color}}text">Lieutenant(5)</span></div>
+          <div class="{{color}}6"><img id="{{color}}6" src="../assets/img/{{color}}6.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[6].quantity}}<span class="{{color}}text">Captain(6)</span></div>
+          <div class="{{color}}7"><img id="{{color}}7" src="../assets/img/{{color}}7.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[7].quantity}}<span class="{{color}}text">Major(7)</span></div>
+          <div class="{{color}}8"><img id="{{color}}8" src="../assets/img/{{color}}8.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[8].quantity}}<span class="{{color}}text">Colonel(8)</span></div>
+          <div class="{{color}}9"><img id="{{color}}9" src="../assets/img/{{color}}9.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[9].quantity}}<span class="{{color}}text">General(9)</span></div>
+          <div class="{{color}}9"><img id="{{color}}10" src="../assets/img/{{color}}10.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[10].quantity}}<span class="{{color}}text">Marshal(10)</span></div>
+          <div class="{{color}}10"><img id="{{color}}11" src="../assets/img/{{color}}11.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[11].quantity}}<span class="{{color}}text">Bomb</span></div>
+          <div class="{{color}}11"><img id="{{color}}0" src="../assets/img/{{color}}0.jpg" (click)="graveyardPieceClicked($event.target.id)">{{thisGraveyard[0].quantity}}<span class="{{color}}text">Flag</span></div>
+        </div>
   </div>
-
   <p id="{{color}}"><span *ngIf="color == 'r'">{{players[0].name}}'s </span><span *ngIf="color == 'b' && players[1].name != ''">{{players[1].name}}'s </span>Graveyard</p>
 </div>
